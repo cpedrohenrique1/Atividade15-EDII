@@ -15,7 +15,7 @@ public:
     void alterarAresta(const int& vertice1, const int& vertice2, const int& peso);
     void removerAresta(const int& vertice1, const int& vertice2);
     int getNVertices()const;
-    int** getMatriz()const;
+    int getNOGrafo(const int& i, const int& j)const;
     ~Grafo();
 };
 

@@ -13,9 +13,9 @@ public:
     Grafo(const int& n_vertices);
     void inserirAresta(const int& vertice1, const int& vertice2, const int& peso);
     void alterarAresta(const int& vertice1, const int& vertice2, const int& peso);
-    void removerAresta(const int& vertice1, const int& vertice2, const int& peso);
+    void removerAresta(const int& vertice1, const int& vertice2);
     int getNVertices()const;
-    int getMatriz()const;
+    int** getMatriz()const;
     ~Grafo();
 };
 

@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     grafo.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tabela.cpp
 
 HEADERS += \
     grafo.h \
-    mainwindow.h
+    mainwindow.h \
+    tabela.h
 
 FORMS += \
     mainwindow.ui

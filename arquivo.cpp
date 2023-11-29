@@ -27,18 +27,18 @@ Grafo* Arquivo::getVetor()const{
 
 void Arquivo::carregar_elementos(QTextStream &in)
 {
-    int i = 0;
+    bool i = true;
     while (!in.atEnd())
     {
         QString linha = in.readLine();
-        if (!i){
+        if (i){
             try{
                 n_vertices = linha.toInt();
                 vetor = new Grafo(n_vertices);
             }catch(std::bad_alloc& e){
                 throw QString("erro ao alocar memoria");
             }
-            ++i;
+            i = false;
             continue;
         }
         if (!vetor){

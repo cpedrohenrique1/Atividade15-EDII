@@ -8,7 +8,7 @@ Arquivo::Arquivo() : vetor(0),
 void Arquivo::abrir()
 {
 
-    QString endereco_arquivo = "/home/puc/Documentos/repos/Atividade15-EDII/dados/grafo";
+    QString endereco_arquivo = "/home/cpedrohenrique1/Documents/development/qtcreator/Atividade15-EDII/dados/grafo";
     QFile arquivo(endereco_arquivo);
     if (!arquivo.open(QIODevice::ReadOnly))
         throw QString("Nao foi possivel abrir o arquivo");

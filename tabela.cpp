@@ -6,7 +6,8 @@ Tabela::Tabela() : tabela(0),
 }
 
 Tabela::Tabela(QTableWidget *parent, const int &tamanho) : tabela(0),
-                                                           grafo(0)
+                                                           grafo(0),
+                                                           tamanho_tabela(0)
 {
     if (!parent)
         throw QString("tabela nao criada");
@@ -24,21 +25,25 @@ Tabela::Tabela(QTableWidget *parent, const int &tamanho) : tabela(0),
     }
 }
 
-Tabela::Tabela(QTableWidget *parent, Grafo *grafo, const int& tamanho) : tabela(0),
-                                                     grafo(0)
+Tabela::Tabela(QTableWidget *parent, Grafo* grafo, const int &tamanho) : tabela(0),
+                                                                        grafo(0),
+                                                                        tamanho_tabela(0)
 {
     if (!parent)
         throw QString("tabela nao criada");
+    if (tamanho <= 0)
+        throw QString("tamanho invalido");
     if (!grafo){
         throw QString("grafo nao criado");
     }
-    if (tamanho <= 0)
-        throw QString("tamanho invalido");
     this->tabela = parent;
-    try{
+    try
+    {
         this->tamanho_tabela = tamanho;
         this->grafo = grafo;
-    }catch(std::bad_alloc& e){
+    }
+    catch (std::bad_alloc &e)
+    {
         throw QString("Nao foi possivel alocar memoria");
     }
 }

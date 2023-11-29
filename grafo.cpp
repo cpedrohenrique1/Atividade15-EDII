@@ -75,7 +75,7 @@ int Grafo::getNVertices() const{
 }
 
 int Grafo::getNOGrafo(const int& i, const int& j)const{
-    if ((i < 0 || i > n_vertices) || (j < 0 || j > n_vertices)){
+    if ((i < 0 || i >= n_vertices) || (j < 0 || j >= n_vertices)){
         throw QString("indice invalido");
     }
     return peso[i][j];

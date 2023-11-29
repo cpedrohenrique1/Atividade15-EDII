@@ -15,6 +15,7 @@ private:
 public:
     Tabela();
     Tabela(QTableWidget *parent, const int &tamanho);
+    Tabela(QTableWidget *parent, Grafo* grafo, const int& tamanho);
     ~Tabela();
     void start();
     void limpar();

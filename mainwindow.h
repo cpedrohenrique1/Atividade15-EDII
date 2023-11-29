@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "tabela.h"
 #include <QMessageBox>
+#include "arquivo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

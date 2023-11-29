@@ -7,15 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     try{
-        tabela = new Tabela(ui->tableWidget, 6);
-        tabela->inserirAresta(1, 2, 10);
-        tabela->inserirAresta(1, 3, 15);
-        tabela->inserirAresta(1, 4, 5);
-        tabela->inserirAresta(2, 4, 20);
-        tabela->inserirAresta(2, 3, 10);
-        tabela->inserirAresta(2, 6, 10);
-        tabela->inserirAresta(3, 5, 5);
-        tabela->inserirAresta(4, 6, 25);
+        Arquivo arquivo;
+        arquivo.abrir();
+        tabela = new Tabela(ui->tableWidget, arquivo.getVetor(), arquivo.getVertices());
         tabela->atualizar();
     }catch(std::bad_alloc& e){
         QMessageBox::critical(this, "Erro", "Erro ao alocar memoria");

@@ -24,6 +24,25 @@ Tabela::Tabela(QTableWidget *parent, const int &tamanho) : tabela(0),
     }
 }
 
+Tabela::Tabela(QTableWidget *parent, Grafo *grafo, const int& tamanho) : tabela(0),
+                                                     grafo(0)
+{
+    if (!parent)
+        throw QString("tabela nao criada");
+    if (!grafo){
+        throw QString("grafo nao criado");
+    }
+    if (tamanho <= 0)
+        throw QString("tamanho invalido");
+    this->tabela = parent;
+    try{
+        this->tamanho_tabela = tamanho;
+        this->grafo = grafo;
+    }catch(std::bad_alloc& e){
+        throw QString("Nao foi possivel alocar memoria");
+    }
+}
+
 Grafo *Tabela::getVetor() const
 {
     return grafo;
@@ -37,7 +56,8 @@ Tabela::~Tabela()
 
 void Tabela::start()
 {
-    if (!grafo){
+    if (!grafo)
+    {
         throw QString("Grafo nao criado");
     }
     if (!tabela)
@@ -66,33 +86,44 @@ void Tabela::atualizar()
         throw QString("grafo nao localizado {atualizar}");
 
     limpar();
-    for (int i = 0; i < tamanho_tabela; ++i){
-        for (int j = 0; j < tamanho_tabela; ++j){
-            if (grafo->getNOGrafo(i,j) == -1){
+    for (int i = 0; i < tamanho_tabela; ++i)
+    {
+        for (int j = 0; j < tamanho_tabela; ++j)
+        {
+            if (grafo->getNOGrafo(i, j) == -1)
+            {
                 tabela->setItem(i, j, new QTableWidgetItem("*"));
-            }else{
+            }
+            else
+            {
                 tabela->setItem(i, j, new QTableWidgetItem(QString::number(grafo->getNOGrafo(i, j))));
             }
         }
     }
 }
 
-void Tabela::inserirAresta(const int &vertice1, const int& vertice2, const int &peso){
-    if (!grafo){
+void Tabela::inserirAresta(const int &vertice1, const int &vertice2, const int &peso)
+{
+    if (!grafo)
+    {
         throw QString("Grafo nao criado");
     }
     grafo->inserirAresta(vertice1, vertice2, peso);
     atualizar();
 }
-void Tabela::alterarAresta(const int &vertice1, const int& vertice2, const int &peso){
-    if (!grafo){
+void Tabela::alterarAresta(const int &vertice1, const int &vertice2, const int &peso)
+{
+    if (!grafo)
+    {
         throw QString("Grafo nao criado");
     }
     grafo->alterarAresta(vertice1, vertice2, peso);
     atualizar();
 }
-void Tabela::removerAresta(const int &vertice1, const int& vertice2){
-    if (!grafo){
+void Tabela::removerAresta(const int &vertice1, const int &vertice2)
+{
+    if (!grafo)
+    {
         throw QString("Grafo nao criado");
     }
     grafo->removerAresta(vertice1, vertice2);

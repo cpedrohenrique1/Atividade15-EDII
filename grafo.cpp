@@ -51,7 +51,7 @@ void Grafo::alterarAresta(const int &vertice1, const int &vertice2, const int &p
     if (peso < 0){
         throw QString("Peso invalido");
     }
-    if (!(bool(this->peso[vertice1 - 1][vertice2 - 1]))){
+    if ((this->peso[vertice1 - 1][vertice2 - 1] == -1)){
         throw QString("Elemento nao existe");
     }
     this->peso[vertice1 - 1][vertice2 - 1] = peso;
@@ -64,7 +64,7 @@ void Grafo::removerAresta(const int &vertice1, const int &vertice2){
     if ((vertice1 <= 0 || vertice2 <= 0) || (vertice1 > n_vertices || vertice2 > n_vertices)){
         throw QString("Vertice invalida");
     }
-    if (!(bool(this->peso[vertice1 - 1][vertice2 - 1]))){
+    if (this->peso[vertice1 - 1][vertice2 - 1] == -1){
         throw QString("Elemento nao existe");
     }
     this->peso[vertice1 - 1][vertice2 - 1] = -1;
@@ -75,6 +75,9 @@ int Grafo::getNVertices() const{
 }
 
 int Grafo::getNOGrafo(const int& i, const int& j)const{
+    if ((i < 0 || i > n_vertices) || (j < 0 || j > n_vertices)){
+        throw QString("indice invalido");
+    }
     return peso[i][j];
 }
 
